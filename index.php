@@ -50,12 +50,20 @@
                 <?php
                     if ($handle = opendir('..')) {
                         $counter = 1;
+                        $path2proj = '.';
                         while (false !== ($entry = readdir($handle))) {
+                            if($entry){
+                                $path2proj = realpath($entry);
+                                if(false !== ($stat = stat($path2proj))){
+                                    $stat = $stat;
+                                    echo "$stat['mtime'];
+                                }
+                            }
                             if ($entry != "." && $entry != "..") {
                                 if($entry == "Table of Content"){
                                     continue;
                                 }else{
-                                    echo "<p class='project-name'><span class='btn btn-danger project-counter-btn'>$counter</span><a class='project-name-btn btn btn-primary' href='../$entry'> $entry</a><br><p>";
+                                    echo "<p class='project-name'><span class='btn btn-danger project-counter-btn'>$counter</span><a class='project-name-btn btn btn-primary' href='../$entry'> $entry</a>". $stat['mtime'] . "<br><p>";
                                 }
                                 $counter++;
                             }
