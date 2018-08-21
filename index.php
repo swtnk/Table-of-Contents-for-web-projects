@@ -23,17 +23,51 @@
             padding: 0px;
             margin-bottom: -15px;
         }
-        a.project-name-btn, .project-counter-btn{
+        a.project-name-btn, .project-counter-btn, .project-size-btn, .project-name-btn{
             padding: 0 10px 0 10px;
         }
         .content-container{
             padding: 5px;
         }
-        a.project-name-btn{
+        a.project-name-btn, .project-name-btn{
             border-radius: 0 0 0 0;
         }
         .project-counter-btn{
-            border-radius: 0 0 0 0;
+            border-radius: 5px 0 0 5px;
+        }
+        .project-size-btn{
+            border-radius: 0 5px 5px 0;
+            text-align: left;
+        }
+        .btn-black{
+            background: #000;
+            color: #fff;
+            text-align: left;
+        }
+        .btn-black2{
+            background: #2F2F2F;
+            color: #fff;
+            text-align: left;
+        }
+        .btn-green{
+            background: #2A4F3A;
+            color: #fff;
+            text-align: left;
+        }
+        .btn-green2{
+            background: #002626;
+            color: #fff;
+            text-align: left;
+        }
+        .btn-blue{
+            background: #2F6690;
+            color: #fff;
+            text-align: left;
+        }
+        .btn-blue2{
+            background: #3A7CA5;
+            color: #fff;
+            text-align: left;
         }
     </style>
 </head>
@@ -51,19 +85,14 @@
                     if ($handle = opendir('..')) {
                         $counter = 1;
                         $path2proj = '.';
+                        echo "<p style='padding-bottom: 2px;' class='project-name'><span class='col-1 btn btn-blue project-counter-btn'>S.No.</span><span class='col-6 project-name-btn btn btn-black'>Project Name</span><span class='col-5 btn btn-green project-size-btn' style='color: #fff;'>Last Modified Date</span><br><p>";
                         while (false !== ($entry = readdir($handle))) {
-                            if($entry){
-                                $path2proj = realpath($entry);
-                                if(false !== ($stat = stat($path2proj))){
-                                    $stat = $stat;
-                                    echo "$stat['mtime'];
-                                }
-                            }
                             if ($entry != "." && $entry != "..") {
                                 if($entry == "Table of Content"){
                                     continue;
                                 }else{
-                                    echo "<p class='project-name'><span class='btn btn-danger project-counter-btn'>$counter</span><a class='project-name-btn btn btn-primary' href='../$entry'> $entry</a>". $stat['mtime'] . "<br><p>";
+                                    $stat = stat("../$entry");
+                                    echo "<p class='project-name'><span class='col-1 btn btn-blue2 project-counter-btn'>$counter</span><a class='col-6 project-name-btn btn btn-black2' href='../$entry' target='_blank'> $entry</a><a href='../$entry' target='_blank' class='col-5 btn btn-green2 project-size-btn' style='color: #fff;'>" . date('d F, Y H:i:s', $stat["mtime"]) . "</a><br><p>";
                                 }
                                 $counter++;
                             }
