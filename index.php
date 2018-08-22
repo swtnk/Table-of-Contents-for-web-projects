@@ -70,6 +70,11 @@
             color: #fff;
             text-align: left;
         }
+        a.btn-white{
+            background: #fff;
+            color: #000;
+            text-align: left;
+        }
         .header{
             background: linear-gradient(to bottom, rgba(0, 116, 249, 0.8), rgba(37, 63, 197, 1));
             color: #fff;
@@ -84,15 +89,33 @@
         .head-btn-right{
             border-radius: 0 0 6px 0;
         }
+        .navbar-header {
+            float: left;
+            padding: 0px;
+            text-align: center;
+            width: 100%;
+        }
+        .navbar-brand {
+            float:none;
+            font-weight: bold;
+            font-size: 25px;
+        }
     </style>
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12 center pad align-items-start header-container">
-                <div id="header"><h1>Workspace</h1></header></div>
-            </div>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Workspace</a>
         </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarText">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="btn btn-white nav-link" style="color: #000;" href="../../phpmyadmin" target="_blank"><i class="fas fa-cogs"></i> phpMyAdmin</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-fluid">
         <div class="row" style="height: 12px;"></div>
         <div class="row">
             <div class="card bg-faded card-block col-8 content-container">
